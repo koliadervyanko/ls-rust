@@ -29,11 +29,15 @@ impl Commands {
                             println!("{} ", name.bright_red());
                         } else if path.extension().and_then(|s| s.to_str()) == Some("rs") {
                             println!("{} ", name.red());
+                        } else if path.extension().and_then(|s| s.to_str()) == Some("jsx") {
+                            println!("{} ", name.cyan());
+                        } else if path.extension().and_then(|s| s.to_str()) == Some("tsx") {
+                            println!("{} ", name.blue());
                         } else {
                             println!("{} ", name);
                         }
                     } else if path.is_dir() {
-                        println!("{} ", name.cyan().bold());
+                        println!("{} ", name.bright_cyan().bold());
                     }
                     io::stdout().flush()?;
                 }
@@ -75,6 +79,12 @@ impl Commands {
                                 println!("{:<10} {:<20} {}", size, date, name.blue());
                             } else if path.extension().and_then(|s| s.to_str()) == Some("rs") {
                                 println!("{:<10} {:<20} {}", size, date, name.red());
+                            } else if path.extension().and_then(|s| s.to_str()) == Some("jsx") {
+                                println!("{:<10} {:<20} {} ", size, date, name.cyan());
+                            } else if path.extension().and_then(|s| s.to_str()) == Some("tsx") {
+                                println!("{:<10} {:<20} {} ", size, date, name.blue());
+                            } else if path.extension().and_then(|s| s.to_str()) == Some("scss") {
+                                println!("{:<10} {:<20} {} ", size, date, name.bright_red());
                             } else {
                                 println!("{:<10} {:<20} {}", size, date, name);
                             }
